@@ -1,9 +1,10 @@
 {
-  "name": "claudiabot",
+  "name": "bluescv",
   "version": "1.0.0",
-  "description": "ClaudiaBot",
+  "description": "BlueSCV",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "mocha app/test/ --recursive"
   },
   "keywords": [
@@ -16,6 +17,5 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
-    "claudia-bot-builder": "^2.12.0"
   }
 }
