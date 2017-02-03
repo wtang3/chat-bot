@@ -1,6 +1,20 @@
-scv = require('./app/scv.js');
+var express = require('express');
+    app = express(),
+    scv = require('./app/scv.js');
 
 
-var test = scv.hello();
+var port = 3000;
 
-console.log(test);
+// Main page
+app.get('/', function(req, res){
+    try{
+        var message = scv.hello();
+        res.send(message);
+    }catch(e){
+        res.send("Uh oh SCV died for some reason.");
+    }
+});
+
+app.listen(port,function(){
+    console.log('App started on port ' + port);
+});
