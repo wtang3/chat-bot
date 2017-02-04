@@ -5,25 +5,26 @@ var express = require('express');
 
 var port = 3000;
 
-app.use(express.static(__dirname + '/app/dist'));
+app.use(express.static(path));
 
 // Main page
 app.get('/', function(req, res){
     try{
         res.sendFile(path + "index.html");
     }catch(e){
-        res.send("Uh oh 4xx");
+        res.send("Uh oh 4xx it's probably your fault.");
     }
 
 });
 
+// Ping endpoint
 app.get('/ping', function(req, res){
     try{
         var message = scv.hello();
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify({ response: message }));
     }catch(e){
-        res.send("Uh oh SCV died for some reason.");
+        res.send(JSON.stringify({ response: "Uh oh SCV died for some reason." }));
     }
 })
 
