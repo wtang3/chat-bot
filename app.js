@@ -20,7 +20,8 @@ app.get('/', function(req, res){
 app.get('/ping', function(req, res){
     try{
         var message = scv.hello();
-        res.send(message);
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify({ response: message }));
     }catch(e){
         res.send("Uh oh SCV died for some reason.");
     }
@@ -29,3 +30,5 @@ app.get('/ping', function(req, res){
 app.listen(port,function(){
     console.log('App started on port ' + port);
 });
+
+module.exports = app;
