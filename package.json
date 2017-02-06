@@ -4,7 +4,7 @@
   "description": "BlueSCV",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "gulp",
     "test": "mocha app/test/ --recursive"
   },
   "keywords": [
@@ -15,6 +15,11 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rename": "^1.2.2",
     "mocha": "^3.2.0"
   },
   "dependencies": {
