@@ -28,7 +28,7 @@ describe('Initial test', function(){
 describe('/GET ping', function(){
     it('Ping should respond with a whats going on? scv ready.', function(done){
         chai.request(server)
-            .get("/ping")
+            .get("/api/ping")
             .end((err, res) => {
                 res.should.have.status(200);
                 res.should.be.a("object");
