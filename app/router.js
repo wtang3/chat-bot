@@ -1,7 +1,12 @@
 var express = require('express'),
     router = express.Router(),
     scv = require('./scv.js'),
+    bodyParser = require('body-parser'),
+    request = require('request'),
     path = __dirname + '/dist/';
+
+    // Use dotenv if Dev.
+    if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 // Main page
 router.get('/', function(req, res){
@@ -27,7 +32,12 @@ router.get('/api/ping', function(req, res){
 // Webhook endpoint
 router.get('/api/webhook', function(req, res){
     try{
-        // implementation
+        // Verification
+        if (req.query['hub.verify_token'] === process.env.VERIFY_ACCESS_TOKEN) {
+            res.send(req.query['hub.challenge'])
+        }
+        res.send(JSON.stringify({ response: "Failed verification"}))
+
     }catch(e){
         res.send(JSON.stringify({ response: "Uh oh you did something wrong."}));
     }
