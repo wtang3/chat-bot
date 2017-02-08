@@ -22,7 +22,7 @@ var gulp      = require('gulp'),
     gulp.task('start', function(callback){
          nodemon({
             script: 'app.js',
-            ext: 'js html'
+            ext: 'js html css'
         })
     });
 
