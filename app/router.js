@@ -24,4 +24,13 @@ router.get('/api/ping', function(req, res){
     }
 });
 
+// Webhook endpoint
+router.get('/api/webhook', function(req, res){
+    try{
+        // implementation
+    }catch(e){
+        res.send(JSON.stringify({ response: "Uh oh you did something wrong."}));
+    }
+});
+
 module.exports = router;
