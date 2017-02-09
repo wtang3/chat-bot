@@ -26,6 +26,6 @@ var gulp      = require('gulp'),
         })
     });
 
-    gulp.task('default', ['minify-css','minify-html', 'start'], function(){
+    gulp.task('default', ['minify-css', 'minify-html', 'start'], function(){
 
     });
