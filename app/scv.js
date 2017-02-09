@@ -1,7 +1,9 @@
+var config = require('../config.js');
+
 module.exports = function(){
-    var quote = "What's going on? SCV ready.";
-    
+
     function pingSCV(){
+        var quote = config.scv.ping;
         return quote;
     }
     
