@@ -11,10 +11,11 @@ var express = require('express'),
 
 // Main page
 router.get('/', function(req, res){
+    var error = config.scv.error3;
     try{
         res.sendFile(path + "index.html");
     }catch(e){
-        res.send("Uh oh 4xx it's probably your fault.");
+        res.send(error3);
     }
 
 });
