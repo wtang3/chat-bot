@@ -4,7 +4,8 @@ var chai     = require('chai'),
     scv      = require('../scv.js'),
     chaihttp = require('chai-http'),
     should   = chai.should(),
-    config   = require('../../config.js');
+    config   = require('../../config.js'),
+    effector = require('../helper/effectors.js'),
     server   = require('../../app.js');
 
     chai.use(chaihttp);
@@ -40,6 +41,51 @@ describe('Ensure config file is valid', function(){
     });
 });
 
+describe('Helper effectors.js (isAscii)', function(){
+    it('Verify string (whats 1+1) is ascii', function(){
+        var input = "what's 1+1";
+        var result = effector.isAscii(input);
+        assert.isTrue(result);
+    });
+
+    it('Verify string (嗨，我喜歡藍色的顏色) is NOT ascii', function(){
+        var input = "嗨，我喜歡藍色的顏色";
+        var result = effector.isAscii(input);
+        assert.isFalse(result);
+    });
+
+    it('Verify string (Hi Unë si blu ngjyra) is NOT ascii', function(){
+        var input = "Hi Unë si blu ngjyra";
+        var result = effector.isAscii(input);
+        assert.isFalse(result);
+    });
+
+    it('Verify string (Привет мне нравится синий цвет) is NOT ascii', function(){
+        var input = "Привет мне нравится синий цвет";
+        var result = effector.isAscii(input);
+        assert.isFalse(result);
+    });
+});
+
+describe('Helper effectors.js (getEquation)', function(){
+    it('whats 1+1 returns 1+1', function(){
+        var input = "what's 1+1";
+        var result = effector.getEquation(input);
+        assert.equal(result,"1+1");
+    });
+
+    it('Can you tell me what is 3*1+4-6 returns 3*1+4-6', function(){
+        var input = "Can you tell me what is 3*1+4-6";
+        var result = effector.getEquation(input);
+        assert.equal(result,"3*1+4-6");
+    });
+
+     it('Can you tell me what is (1+2)*6/2 please? return (1+2)*6/2', function(){
+        var input = "Can you tell me what is (1+2)*6/2 please?";
+        var result = effector.getEquation(input);
+        assert.equal(result,"(1+2)*6/2");
+    });
+});
 
 describe('/GET ping', function(){
     it('Ping should respond with a whats going on? scv ready.', function(done){
