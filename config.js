@@ -12,4 +12,9 @@ config.facebook = {
     verificationError : "Failed verification"
 };
 
+config.regex = {
+    ascii  : /^[\x00-\x7F]*$/,
+    filter : /[a-zA-Z'|,.@#$`";{}\\= _?<>~]*/g
+}
+
 module.exports = config;
