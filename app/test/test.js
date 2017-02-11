@@ -4,6 +4,7 @@ var chai     = require('chai'),
     scv      = require('../scv.js'),
     chaihttp = require('chai-http'),
     should   = chai.should(),
+    config   = require('../../config.js');
     server   = require('../../app.js');
 
     chai.use(chaihttp);
@@ -24,6 +25,21 @@ describe('Initial test', function(){
         assert.equal(result,"What's going on? SCV ready.", "Should say What's going on? SCV ready.");
     });
 });
+
+describe('Ensure config file is valid', function(){
+    it('Config file should be populated', function(){
+        expect(config).to.be.not.null;
+    });
+
+    it('Check config.scv', function(){
+        expect(config.scv).to.be.not.null;
+    });
+
+    it('Check config.facebook', function(){
+        expect(config.scv).to.be.not.null;
+    });
+});
+
 
 describe('/GET ping', function(){
     it('Ping should respond with a whats going on? scv ready.', function(done){
