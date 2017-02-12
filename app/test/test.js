@@ -80,10 +80,22 @@ describe('Helper effectors.js (getEquation)', function(){
         assert.equal(result,"3*1+4-6");
     });
 
-     it('Can you tell me what is (1+2)*6/2 please? return (1+2)*6/2', function(){
+    it('Can you tell me what is (1+2)*6/2 please? return (1+2)*6/2', function(){
         var input = "Can you tell me what is (1+2)*6/2 please?";
         var result = effector.getEquation(input);
         assert.equal(result,"(1+2)*6/2");
+    });
+
+    it('<script>alert("I am trying to be malicious")</script>', function(){
+        var input = "<script>alert('I am trying to be malicious')</script>";
+        var result = effector.getEquation(input);
+        assert.equal(result,"()/");
+    });
+
+    it('xss &#106;&#97;&#118;&#97;', function(){
+        var input = "<IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;>";
+        var result = effector.getEquation(input);
+        assert.equal(result,"106971189711599114105112116589710810111411640398883833941");
     });
 });
 
