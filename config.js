@@ -15,7 +15,7 @@ config.facebook = {
 
 config.regex = {
     ascii     : /^[\x00-\x7F]*$/,
-    filter    : /[a-zA-Z'|,.@#$`";{}\\= _?<>~]*/g
+    filter    : /[a-zA-Z'|,.@#$`";{}\\= _?<>~&]*/g
 }
 
 module.exports = config;
