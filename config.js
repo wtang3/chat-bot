@@ -14,19 +14,7 @@ config.facebook = {
 
 config.regex = {
     ascii     : /^[\x00-\x7F]*$/,
-    filter    : /[a-zA-Z'|,.@#$`";{}\\= _?<>~]*/g,
-    operators : /([*\/+\-()^])/g
+    filter    : /[a-zA-Z'|,.@#$`";{}\\= _?<>~]*/g
 }
 
-config.math ={
-    pemdas : {
-        '(' : 1,
-        ')' : 1,
-        '^' : 2,
-        '*' : 4,
-        '/' : 4,
-        '+' : 5,
-        '-' : 6
-    }
-}
 module.exports = config;
