@@ -5,7 +5,8 @@ config.scv = {
     ping   : "What's going on? SCV ready.",
     error  : "Uh oh SCV died for some reason.",
     error2 : "Uh oh you did something wrong.",
-    error3 : "Uh oh 4xx it's probably your fault."
+    error3 : "Uh oh 4xx it's probably your fault.",
+    error4 : "Sorry I have no clue what you are trying to accomplish"
 };
 
 config.facebook = {
