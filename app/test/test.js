@@ -87,6 +87,32 @@ describe('Helper effectors.js (getEquation)', function(){
     });
 });
 
+describe('Helper effectors.js (computeAnswer)', function(){
+    it('(1+2)^2 should return 9', function(){
+        var input = "(1+2)^2";
+        var result = effector.computeAnswer(input);
+        assert.equal(result,"9");
+    });
+
+    it('12+60-23 should return 49', function(){
+        var input = "12+60-23";
+        var result = effector.computeAnswer(input);
+        assert.equal(result,"49");
+    });
+
+    it('(5 + 3) * 12 / 3 should return 32', function(){
+        var input = "(5 + 3) * 12 / 3";
+        var result = effector.computeAnswer(input);
+        assert.equal(result,"32");
+    });
+
+    it('1*2^2/6 should return  0.6666666666666666', function(){
+        var input = "1*2^2/6";
+        var result = effector.computeAnswer(input);
+        assert.equal(result,"0.6666666666666666");
+    });
+});
+
 describe('/GET ping', function(){
     it('Ping should respond with a whats going on? scv ready.', function(done){
         chai.request(server)
