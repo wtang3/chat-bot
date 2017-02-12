@@ -17,6 +17,7 @@ module.exports = function(){
         var pemdas = config.math.pemdas;
         var operators = config.regex.operators;
         var stack = [];
+        input = input.replace(/\s/g,'');
         input = input.replace(operators,",$1,")
         input = input.split(",");
         
