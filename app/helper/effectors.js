@@ -14,8 +14,15 @@ module.exports = function(){
         return false
     }
 
+    // This is a bit slow, might try to refactored logic at a later time.
     function computeAnswer(input){
-        return math.eval(input);
+        try{
+            return math.eval(input);
+        }catch(e){
+            // possibly add some logging on what came in.
+            // log(e,input);
+            return config.scv.error4;
+        }
     }
     
 

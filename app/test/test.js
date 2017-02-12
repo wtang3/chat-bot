@@ -93,7 +93,7 @@ describe('Helper effectors.js (computeAnswer)', function(){
         var result = effector.computeAnswer(input);
         assert.equal(result,"9");
     });
-
+    
     it('12+60-23 should return 49', function(){
         var input = "12+60-23";
         var result = effector.computeAnswer(input);
@@ -110,6 +110,11 @@ describe('Helper effectors.js (computeAnswer)', function(){
         var input = "1*2^2/6";
         var result = effector.computeAnswer(input);
         assert.equal(result,"0.6666666666666666");
+    });
+    it('2*2+1*+2 should fail', function(){
+        var input = "2*2+1+*2";
+        var result = effector.computeAnswer(input);
+        assert.equal(result, config.scv.error4);
     });
 });
 
