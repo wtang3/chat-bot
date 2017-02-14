@@ -10,6 +10,7 @@ config.scv = {
 };
 
 config.facebook = {
+    uri: 'https://graph.facebook.com/v2.6/me/messages',
     verificationError : "Failed verification"
 };
 
