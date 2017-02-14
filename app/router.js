@@ -1,8 +1,6 @@
 var express = require('express'),
     router = express.Router(),
     scv = require('./scv.js'),
-    bodyParser = require('body-parser'),
-    request = require('request'),
     path = __dirname + '/dist/',
     config = require('../config.js');
 
@@ -32,7 +30,7 @@ router.get('/api/ping', function(req, res){
     }
 });
 
-// Webhook endpoint
+// Facebook verification
 router.get('/api/webhook', function(req, res){
     var error = config.scv.error2;
     var veriError = config.facebook.verificationError;
@@ -45,6 +43,25 @@ router.get('/api/webhook', function(req, res){
 
     }catch(e){
         res.send(JSON.stringify({ response: error}));
+    }
+});
+
+// Webhook endpoint
+router.post('/api/webhook', function(req, res){
+    try{
+        var data = req.body;
+        
+        // Ensure page subscription
+        if(data.object == 'page'){
+            data.entry.forEach(function(entry){
+                entry.messaging.forEach(function(messagingEvent) {
+                   
+                });    
+            });
+        }
+        res.sendStatus(200);
+    }catch(e){
+        res.sendStatus(500);
     }
 });
 
